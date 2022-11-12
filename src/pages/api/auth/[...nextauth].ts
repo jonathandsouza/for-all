@@ -1,5 +1,6 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
+import GitHubProvider from "next-auth/providers/github";
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
@@ -24,14 +25,12 @@ export const authOptions: NextAuthOptions = {
 			clientSecret: env.DISCORD_CLIENT_SECRET,
 		}),
 		GitHubProvider({
-			clientId: process.env.GITHUB_ID,
-			clientSecret: process.env.GITHUB_SECRET
+			clientId: process.env.GITHUB_ID as string,
+			clientSecret: process.env.GITHUB_SECRET as string,
 		})
 	],
 };
 
 export default NextAuth(authOptions);
-function GitHubProvider(arg0: { clientId: string | undefined; clientSecret: string | undefined; }): import("next-auth/providers/index.js").Provider {
-	throw new Error("Function not implemented.");
-}
+
 
