@@ -23,8 +23,15 @@ export const authOptions: NextAuthOptions = {
 			clientId: env.DISCORD_CLIENT_ID,
 			clientSecret: env.DISCORD_CLIENT_SECRET,
 		}),
-		// ...add more providers here
+		GitHubProvider({
+			clientId: process.env.GITHUB_ID,
+			clientSecret: process.env.GITHUB_SECRET
+		})
 	],
 };
 
 export default NextAuth(authOptions);
+function GitHubProvider(arg0: { clientId: string | undefined; clientSecret: string | undefined; }): import("next-auth/providers/index.js").Provider {
+	throw new Error("Function not implemented.");
+}
+
